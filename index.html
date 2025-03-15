@@ -1,0 +1,1241 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <link rel="icon" type="image/svg+xml" href="./vite.svg"/>
+    <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+    <!--    <link href="./src/styles/start-screen.css" rel="stylesheet" type="text/css">-->
+    <!--    <link href="src/styles/server-selection.css" rel="stylesheet" type="text/css">-->
+
+    <!--    <link href="src/styles/server-selection2.css" rel="stylesheet" type="text/css">-->
+
+    <!--     Yandex Games SDK -->
+    <!--    <script src="https://sdk.games.s3.yandex.net/sdk.js"></script>-->
+
+    <!--    <title>Vite + TS</title>-->
+    <title>Soccer Online Game Admin Version</title>
+    <!--    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">-->
+
+    <script>
+        function onCaptchaSuccess(token) {
+            console.log(hcaptcha);
+            console.log("hCaptcha solved! Token:", token);
+
+            // Store the response token
+            // document.getElementById("captcha-response").value = token;
+
+            // Enable submit button
+            // document.getElementById("submit-btn").disabled = false;
+        }
+    </script>
+
+    <!--    <script src="https://js.hcaptcha.com/1/api.js" async defer></script>-->
+
+
+  <script type="module" crossorigin src="./assets/index-p-qJcVi_.js"></script>
+  <link rel="stylesheet" crossorigin href="./assets/index-C6oZjBRp.css">
+</head>
+<!--&lt;!&ndash; Google tag (gtag.js) &ndash;&gt;-->
+<!--<script async src="https://www.googletagmanager.com/gtag/js?id=G-K1XH9JB2YN"></script>-->
+<!--<script>-->
+<!--  window.dataLayer = window.dataLayer || [];-->
+<!--  function gtag(){dataLayer.push(arguments);}-->
+<!--  gtag('js', new Date());-->
+
+<!--  gtag('config', 'G-K1XH9JB2YN');-->
+<!--</script>-->
+<body>
+
+<div id="ping-display"
+     style="z-index:99; position: absolute; bottom: 10px; left: 10px; color: white; font-size: 18px; z-index: 1000;">
+    Ping: -- ms
+</div>
+
+
+<!--<h2 id="packet-stat">11</h2>-->
+
+<!--<div id="start-screen" style="display: flex;">-->
+<!--  <div id="start-screen-content">-->
+<!--    <h1>Soccer Game</h1>-->
+<!--    <button id="play-button">Play</button>-->
+<!--    <button id="instructions-button">Instructions</button>-->
+<!--  </div>-->
+<!--</div>-->
+<!--    <div id="app"></div>-->
+<!--<div id="start-screen">-->
+<!--    <div class="center">-->
+<!--        <button id="start-btn">Start</button>-->
+<!--<div>-->
+
+<!--</div>-->
+
+<!--#-->
+
+
+<!--<button id="startButton">Start</button>-->
+<!--<button id="startButton">Loading</button>-->
+<!--        <button id="startButton"> <i class="fa fa-futbol"></i> Start </button>-->
+
+<!--    </div>-->
+<!--    <button id="cool-start-btn">Start</button>-->
+<!---->
+<!--</div>-->
+<div id="screens">
+
+    <!--     <div class="language-selector">-->
+    <!--    <label for="language-dropdown">Select Language:</label>-->
+    <!--    <select id="language-dropdown">-->
+    <!--      <option value="en" selected>English</option>-->
+    <!--      <option value="es">Español</option>-->
+    <!--      <option value="fr">Français</option>-->
+    <!--      <option value="de">Deutsch</option>-->
+    <!--    </select>-->
+    <!--  </div>-->
+    <div id="loading-screen">
+        <!--  <div id="loading-bar-container">-->
+        <!--    <div id="loading-bar"></div>-->
+        <!--      <div id="loading-spinner"></div>-->
+
+        <!--  </div>-->
+        <!--        <p id="loading-text">Loading...</p>-->
+        <p id="loading-text"></p>
+    </div>
+    <!--<button id="clickme" style="z-index: 107; position: absolute; top: 40px;">expired</button>-->
+    <!--    <div id="disconnect-screen" class="screen">-->
+    <!--        <h1 class="title">You were disconnected</h1>-->
+
+    <!--        <div class="center-align">-->
+    <!--            <button id="reconnect-button" class="reconnect-btn" disabled>reconnect</button>-->
+    <!--        </div>-->
+    <!--    </div>-->
+    <!--    -->
+    <div id="disconnect-screen" class="disconnect-overlay hidden">
+        <div class="disconnect-content">
+            <!--    <h2>Connection Lost</h2>-->
+            <!--            <h2 id="disconnect-text">You've been disconnected</h2>-->
+            <h2 id="disconnect-text"></h2>
+            <!--    <p>You have been disconnected from the server.</p>-->
+            <button id="reconnect-button" class="reconnect-button start-btn">Reconnect</button>
+            <!--    <button id="quit-button" class="quit-button">Quit</button>-->
+        </div>
+    </div>
+
+    <div id="start-screen" class="screen">
+
+        <!--        <div id="captchaModal" class="captcha-modal">-->
+        <!--            <div class="captcha-modal-content">-->
+
+        <!--&lt;!&ndash;                <div id="hcaptcha-container" ></div>&ndash;&gt;-->
+        <!--&lt;!&ndash;                <div id="hcaptcha-container" ></div>&ndash;&gt;-->
+        <!--                &lt;!&ndash;                <div class="h-captcha" data-sitekey="bddafdc6-7226-4114-a4f0-3c9eca423f44"></div>&ndash;&gt;-->
+        <!--                &lt;!&ndash;                <form id="captcha-form" action="/verify-hcaptcha" method="POST">&ndash;&gt;-->
+        <!--                &lt;!&ndash;                    <div class="h-captcha" data-sitekey="bddafdc6-7226-4114-a4f0-3c9eca423f44" data-callback="onCaptchaSuccess"></div>&ndash;&gt;-->
+        <!--                &lt;!&ndash;                    <input type="hidden" id="captcha-response" name="h-captcha-response">&ndash;&gt;-->
+        <!--                &lt;!&ndash;                    <button type="submit" id="submit-btn" disabled>Submit</button>&ndash;&gt;-->
+        <!--                &lt;!&ndash;                </form>&ndash;&gt;-->
+
+        <!--                &lt;!&ndash;                <form action="" method="POST">&ndash;&gt;-->
+        <!--                &lt;!&ndash;                    <div class="h-captcha" data-sitekey="your_site_key" data-callback="onCaptchaSuccess"></div>&ndash;&gt;-->
+        <!--                &lt;!&ndash;                    <br/>&ndash;&gt;-->
+        <!--                &lt;!&ndash;                    <input type="submit" value="Submit"/>&ndash;&gt;-->
+        <!--                &lt;!&ndash;                </form>&ndash;&gt;-->
+        <!--            </div>-->
+        <!--        </div>-->
+
+
+        <!--        &lt;!&ndash; Change Server Button &ndash;&gt;-->
+        <!--        <button id="changeServerBtn"></button>-->
+
+        <!--        &lt;!&ndash; Server Selection Modal &ndash;&gt;-->
+        <!--        <div id="serverModal" class="server-modal">-->
+        <!--            <div class="server-modal-content">-->
+
+        <!--                &lt;!&ndash; Scrollable Grid Container &ndash;&gt;-->
+        <!--                <div class="server-grid-container">-->
+        <!--                    <div class="server-grid-header">-->
+        <!--                        <span>Server</span>-->
+        <!--                        <span>Ping</span>-->
+        <!--                        <span>Players</span>-->
+        <!--                    </div>-->
+
+        <!--                    <div class="server-grid-body">-->
+        <!--                        &lt;!&ndash; Servers will be added dynamically here &ndash;&gt;-->
+        <!--                    </div>-->
+        <!--                </div>-->
+
+        <!--            </div>-->
+        <!--        </div>-->
+        <!--        TESTING START-->
+        <!--<div class="card-selection">-->
+        <!--  <div class="card" data-mode="classic">-->
+        <!--    <h3>Classic</h3>-->
+        <!--    <p>Play on a grass field.</p>-->
+        <!--  </div>-->
+        <!--  <div class="card" data-mode="ice-mode">-->
+        <!--    <h3>Ice Mode</h3>-->
+        <!--    <p>Play on a slippery ice field.</p>-->
+        <!--  </div>-->
+        <!--  <div class="card" data-mode="challenge">-->
+        <!--    <h3>Challenge</h3>-->
+        <!--    <p>Face tougher opponents.</p>-->
+        <!--  </div>-->
+        <!--</div>-->
+
+
+        <!--        <div class="card-selection">-->
+        <!--  <div class="card" data-mode="classic">-->
+        <!--    <h3>Classic</h3>-->
+        <!--    <p>Play on a grass field.</p>-->
+        <!--  </div>-->
+        <!--  <div class="card" data-mode="ice-mode">-->
+        <!--    <h3>Ice Mode</h3>-->
+        <!--    <p>Play on a slippery ice field.</p>-->
+        <!--  </div>-->
+        <!--  <div class="card" data-mode="challenge">-->
+        <!--    <h3>Challenge</h3>-->
+        <!--    <p>Face tougher opponents.</p>-->
+        <!--  </div>-->
+        <!--</div>-->
+
+        <!--        <h1>Three.js Soccer Game</h1>-->
+        <!--  <p>Select a Game Mode to Begin</p>-->
+
+
+        <!--        <h1 class="title">Soccer Game</h1>-->
+        <h1 class="title" id="title-text">Soccer</h1>
+        <!--  <p class="subtitle">Select a game mode to start</p>-->
+
+        <div class="mode-selector">
+            <div id="grass-mode-card" class="mode-card" data-mode="SPRING">
+                <img src="assets/start-screen/grass-mode.jpg" alt="Classic Mode" draggable="false">
+                <div class="overlay">
+                    <h3 id="classic-mode-text">Classic Mode</h3>
+                    <!--      <p>A traditional soccer experience on a grass field.</p>-->
+                    <p id="classic-mode-description">Play on a grass field.</p>
+                </div>
+
+            </div>
+            <div id="ice-mode-card" class="mode-card" data-mode="WINTER">
+                <img src="assets/start-screen/ice-mode.jpg" alt="Ice Mode" draggable="false">
+                <div class="overlay">
+                    <h3 id="ice-mode-text">Ice Mode</h3>
+                    <!--      <p>Play soccer on a slippery ice field.</p>-->
+                    <p id="ice-mode-description">Play on a slippery ice field.</p>
+                </div>
+
+            </div>
+
+            <!--    <div class="mode-card" data-mode="challenge">-->
+            <!--      <img src="public/assets/start-screen/ice-mode.jpg" alt="Challenge Mode">-->
+            <!--      <h3>Challenge Mode</h3>-->
+            <!--      <p>Face obstacles and test your skills.</p>-->
+            <!--    </div>-->
+        </div>
+
+
+        <!--                <div id="hcaptcha-container"></div>-->
+        <!--        <div class="cf-flex">-->
+        <!--            <div id="cf-container"></div>-->
+        <!--        </div>-->
+
+        <!--        <div id="user-nickname">-->
+        <!--            &lt;!&ndash;            <input id="spawn-nickname" maxlength="15" type="text" placeholder="This is the tale of...">&ndash;&gt;-->
+        <!--            <input type="text" id="nickname-input" maxlength="15" autocomplete="off" placeholder="Your nickname"/>-->
+        <!--            &lt;!&ndash;autocomplete="off"&ndash;&gt;-->
+        <!--        </div>--><!--        ⚽🔴 🔵🖥️-->
+        <div id="captcha-success">
+            <div id="nickname-container">
+                <input
+                        type="text"
+                        id="nickname-input"
+                        placeholder="Enter your nickname"
+                        autocomplete="off"
+                        maxlength="300"
+                />
+                <!--            <button id="start-game-button">Start Game</button>-->
+            </div>
+
+            <div class="center-align">
+                <!--            <button id="start-button" class="start-btn" disabled>Start Game</button>-->
+                <button id="start-button" class="start-game-btn ready" disabled>Start Game</button>
+            </div>
+
+
+            <!-- Change Server Button -->
+            <button id="changeServerBtn"></button>
+
+            <!-- Server Selection Modal -->
+            <div id="serverModal" class="server-modal">
+                <div class="server-modal-content">
+
+                    <!-- Scrollable Grid Container -->
+                    <div class="server-grid-container">
+                        <div class="server-grid-header">
+                            <span id="server-column-server"></span>
+                            <span id="server-column-ping"></span>
+                            <span id="server-column-players"></span>
+                        </div>
+
+                        <div class="server-grid-body">
+                            <!-- Servers will be added dynamically here -->
+                        </div>
+                    </div>
+                    <button id="refresh-servers">Обновить</button>
+
+                </div>
+
+            </div>
+
+            <div id="roomsModal" class="rooms-modal">
+                <div class="rooms-modal-content">
+
+                    <!-- Scrollable Grid Container -->
+                    <div class="rooms-grid-container">
+                        <div class="rooms-grid-header">
+                            <span id="rooms-column-server">id</span>
+                            <span id="rooms-column-ping">mode</span>
+                            <span id="rooms-column-players">users</span>
+                        </div>
+
+                        <div class="rooms-grid-body">
+                            <!-- Servers will be added dynamically here -->
+                        </div>
+                    </div>
+
+                    <button id="back-to-server">Back</button>
+                    <button id="refresh-rooms">Обновить</button>
+                </div>
+            </div>
+        </div>
+
+
+        <!--  <button id="start-button" class="start-btn" disabled>Start Game</button>-->
+
+
+        <!--  <div class="mode-selector">-->
+        <!--    <div class="card" data-mode="classic">-->
+        <!--      <h3>Classic</h3>-->
+        <!--      <p>Play on a grass field.</p>-->
+        <!--    </div>-->
+        <!--    <div class="card" data-mode="ice-mode">-->
+        <!--      <h3>Ice Mode</h3>-->
+        <!--      <p>Play on a slippery ice field.</p>-->
+        <!--    </div>-->
+        <!--    <div class="card" data-mode="challenge">-->
+        <!--      <h3>Challenge</h3>-->
+        <!--      <p>Face tougher opponents.</p>-->
+        <!--    </div>-->
+        <!--  </div>-->
+        <!--        -->
+        <!--        <div class="mode-selector">-->
+        <!--  <div class="mode-card" data-mode="classic">-->
+        <!--    <img src="public/assets/start-screen/grass-mode.jpg" alt="Classic Mode">-->
+        <!--    <h3>Classic Mode</h3>-->
+        <!--  </div>-->
+        <!--  <div class="mode-card" data-mode="ice">-->
+        <!--    <img src="public/assets/start-screen/ice-mode.jpg" alt="Ice Mode">-->
+        <!--    <h3>Ice Mode</h3>-->
+        <!--  </div>-->
+        <!--&lt;!&ndash;  <div class="mode-card" data-mode="challenge">&ndash;&gt;-->
+        <!--&lt;!&ndash;    <img src="challenge-mode.jpg" alt="Challenge Mode">&ndash;&gt;-->
+        <!--&lt;!&ndash;    <h3>Challenge Mode</h3>&ndash;&gt;-->
+        <!--&lt;!&ndash;  </div>&ndash;&gt;-->
+        <!--</div>-->
+
+
+        <!--  <button id="start-game-button" disabled>Start Game</button>-->
+
+
+        <!--<div id="game-mode-cards" class="game-mode-cards">-->
+        <!--  <div class="game-mode-card" data-mode="classic">-->
+        <!--    <img src="public/assets/start-screen/grass-mode.jpg" alt="Classic Mode">-->
+        <!--    <h3>Classic</h3>-->
+        <!--    <p>Play on a grass field with standard rules.</p>-->
+        <!--  </div>-->
+        <!--  <div class="game-mode-card" data-mode="ice-mode">-->
+        <!--    <img src="public/assets/start-screen/ice-mode.jpg" alt="Ice Mode">-->
+        <!--    <h3>Ice Mode</h3>-->
+        <!--    <p>Play on a slippery ice field for a unique challenge.</p>-->
+        <!--  </div>-->
+        <!--  <div class="game-mode-card" data-mode="challenge">-->
+        <!--    <img src="challenge.png" alt="Challenge Mode">-->
+        <!--    <h3>Challenge</h3>-->
+        <!--    <p>Face tougher opponents and unpredictable events.</p>-->
+        <!--  </div>-->
+    </div>
+
+
+    <!--        TESTING END-->
+
+
+    <!--    <h1>Soccer Game</h1>--><!--    <button id="start-button">Start Game</button>-->
+    <!--        <h1>Soccer Game</h1>-->
+    <!--        <div id="game-mode-selector" class="game-mode-selector">-->
+    <!--            <h2>Select Game Mode</h2>-->
+    <!--            <select id="game-mode-dropdown">-->
+    <!--                <option value="classic">Classic</option>-->
+    <!--                <option value="ice-mode">Ice Mode</option>-->
+    <!--&lt;!&ndash;                <option value="challenge">Challenge Mode</option>&ndash;&gt;-->
+    <!--            </select>-->
+    <!--        </div>-->
+
+    <!--        <div class="dropdown-container">-->
+    <!--  <label for="game-mode-selector">Select Game Mode:</label>-->
+    <!--  <select id="game-mode-selector" class="dropdown">-->
+    <!--    <option value="classic" data-color="#27ae60">Classic</option>-->
+    <!--    <option value="ice-mode" data-color="#3498db">Ice Mode</option>-->
+    <!--&lt;!&ndash;    <option value="challenge" data-color="#e74c3c">Challenge</option>&ndash;&gt;-->
+    <!--  </select>-->
+    <!--</div>-->
+    <!--        -->
+    <!--        <p>Select a Game Mode to Begin</p>-->
+    <!--        <div class="mode-selector">-->
+    <!--            <p>Select a Game Mode to Begin</p>-->
+    <!--    <div class="card" data-mode="classic">-->
+    <!--      <h3>Classic</h3>-->
+    <!--      <p>Play on a grass field.</p>-->
+    <!--    </div>-->
+    <!--    <div class="card" data-mode="ice-mode">-->
+    <!--      <h3>Ice Mode</h3>-->
+    <!--      <p>Play on a slippery ice field.</p>-->
+    <!--    </div>-->
+    <!--    <div class="card" data-mode="challenge">-->
+    <!--      <h3>Challenge</h3>-->
+    <!--      <p>Face tougher opponents.</p>-->
+    <!--    </div>-->
+    <!--  </div>-->
+    <!--        -->
+
+
+    <!--        <p class="subtitle">Select a game mode to start</p>-->
+
+    <!--  <div class="mode-selector">-->
+    <!--    <div class="mode-card" data-mode="classic">-->
+    <!--      <img src="/assets/start-screen/grass-mode.jpg" alt="Classic Mode">-->
+    <!--      <h3>Classic Mode</h3>-->
+    <!--      <p>A traditional soccer experience on a grass field.</p>-->
+    <!--    </div>-->
+    <!--    <div class="mode-card" data-mode="ice">-->
+    <!--      <img src="/assets/start-screen/ice-mode.jpg" alt="Ice Mode">-->
+    <!--      <h3>Ice Mode</h3>-->
+    <!--      <p>Play soccer on a slippery ice field.</p>-->
+    <!--    </div>-->
+    <!--&lt;!&ndash;    <div class="mode-card" data-mode="challenge">&ndash;&gt;-->
+    <!--&lt;!&ndash;      <img src="challenge-mode.jpg" alt="Challenge Mode">&ndash;&gt;-->
+    <!--&lt;!&ndash;      <h3>Challenge Mode</h3>&ndash;&gt;-->
+    <!--&lt;!&ndash;      <p>Face obstacles and test your skills.</p>&ndash;&gt;-->
+    <!--&lt;!&ndash;    </div>&ndash;&gt;-->
+    <!--  </div>-->
+
+    <!--         <button id="start-button" class="start-btn" disabled>Start Game</button>-->
+
+
+    <!--        <div class="mode-selector">-->
+    <!--  <div class="mode-card" data-mode="classic">-->
+    <!--    <img src="/assets/start-screen/grass-mode.jpg" alt="Classic Mode">-->
+    <!--    <h3>Classic Mode</h3>-->
+    <!--  </div>-->
+    <!--  <div class="mode-card" data-mode="ice">-->
+    <!--    <img src="/assets/start-screen/ice-mode.jpg" alt="Ice Mode">-->
+    <!--    <h3>Ice Mode</h3>-->
+    <!--  </div>-->
+    <!--            -->
+
+
+    <!--  <div class="mode-card" data-mode="challenge">-->
+    <!--    <img src="challenge-mode.jpg" alt="Challenge Mode">-->
+    <!--    <h3>Challenge Mode</h3>-->
+    <!--  </div>-->
+    <!--</div>-->
+
+
+    <!--<button id="start-game-button" disabled>Start Game</button>-->
+
+    <!--        <div class="dropdown-container">-->
+    <!--            <label for="game-mode-selector">Select Game Mode:</label>-->
+    <!--            <select id="game-mode-selector" class="dropdown">-->
+    <!--                <option value="classic">Classic</option>-->
+    <!--                <option value="ice-mode">Ice Mode</option>-->
+    <!--                <option value="challenge">Challenge</option>-->
+    <!--            </select>-->
+    <!--        </div>-->
+
+
+    <!--        <button id="start-game-btn">Start Game</button>-->
+
+    <!--                <div id="game-mode-cards" class="game-mode-cards">-->
+    <!--          <div class="game-mode-card" data-mode="classic">-->
+    <!--            <img src="/assets/start-screen/grass-mode.jpg" alt="Classic Mode">-->
+    <!--            <h3>Classic</h3>-->
+    <!--            <p>Play on a grass field with standard rules.</p>-->
+    <!--          </div>-->
+    <!--          <div class="game-mode-card" data-mode="ice-mode">-->
+    <!--            <img src="/assets/start-screen/ice-mode.jpg" alt="Ice Mode">-->
+    <!--            <h3>Ice Mode</h3>-->
+    <!--            <p>Play on a slippery ice field for a unique challenge.</p>-->
+    <!--          </div>-->
+
+
+    <!--  <div class="game-mode-card" data-mode="challenge">-->
+    <!--    <img src="challenge.png" alt="Challenge Mode">-->
+    <!--    <h3>Challenge</h3>-->
+    <!--    <p>Face tougher opponents and unpredictable events.</p>-->
+    <!--  </div>-->
+</div>
+
+
+<!--        <div class="card-selection">  <div class="card" data-mode="classic">    <h3>Classic</h3>    <p>Play on a grass field.</p>  </div>  <div class="card" data-mode="ice-mode">    <h3>Ice Mode</h3>    <p>Play on a slippery ice field.</p>  </div>&lt;!&ndash;  <div class="card" data-mode="challenge">&ndash;&gt;&lt;!&ndash;    <h3>Challenge</h3>&ndash;&gt;&lt;!&ndash;    <p>Face tougher opponents.</p>&ndash;&gt;&lt;!&ndash;  </div>&ndash;&gt;</div>-->
+
+
+<!--        <div id="game-mode-slider" class="game-mode-slider">-->
+<!--  <button class="prev-btn">◀</button>-->
+<!--  <div class="slider-content">-->
+<!--    <div class="slider-item" data-mode="classic">Classic</div>-->
+<!--    <div class="slider-item" data-mode="ice-mode">Ice Mode</div>-->
+<!--    <div class="slider-item" data-mode="challenge">Challenge</div>-->
+<!--  </div>-->
+<!--  <button class="next-btn">▶</button>-->
+<!--</div>-->
+
+<!--        <div id="game-mode-slider" class="game-mode-slider">-->
+<!--  <button class="prev-btn">◀</button>-->
+<!--  <div class="slider-container">-->
+<!--    <div class="slider-content">-->
+<!--      <div class="slider-item" data-mode="classic">-->
+<!--        <h3>Classic</h3>-->
+<!--        <p>Play on a grass field.</p>-->
+<!--      </div>-->
+<!--      <div class="slider-item" data-mode="ice-mode">-->
+<!--        <h3>Ice Mode</h3>-->
+<!--        <p>Play on a slippery ice field.</p>-->
+<!--      </div>-->
+<!--      <div class="slider-item" data-mode="challenge">-->
+<!--        <h3>Challenge</h3>-->
+<!--        <p>Face tougher opponents.</p>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--  <button class="next-btn">▶</button>-->
+<!--</div>-->
+
+
+<!--        <button id="startButton">Start</button>-->
+<!--    </div>-->
+
+<div id="in-game-ui">
+    <div id="goal-screen">
+        <!--        <h1 id="goal-txt">Goal</h1>-->
+        <!--        <div id="goal-text" class="goal-text hidden">GOAL</div>-->
+        <div id="goal-text" class="goal-text">GOAL</div>
+
+    </div>
+
+    <!--    <div id="stamina-bar-container">-->
+    <!--        <div id="stamina-bar"></div>-->
+    <!--    </div>-->
+
+    <!--    <canvas id="stamina-meter" width="200" height="200" style="position: absolute; bottom: 20px; left: 20px; z-index: 51"></canvas>-->
+
+
+    <div id="ui-overlay">
+
+        <!--                        <div id="score-timer" class="score-timer">-->
+        <!--              <div class="score">-->
+        <!--                <span class="team red-team"><span id="red-score">0</span></span>-->
+        <!--                <span class="team blue-team"><span id="blue-score">0</span></span>-->
+        <!--              </div>-->
+        <!--              <div class="timer">-->
+        <!--                <span id="time-left">10:00</span>-->
+        <!--              </div>-->
+        <!--            </div>-->
+        <!--            -->
+
+        <div id="score-timer" class="score-timer">
+            <div id="scoreboard">
+                <!--        Score: <span id="score">0 - 0</span>-->
+                <!--                 <span class="dot"></span>-->
+                <span id="score">0 - 0</span>
+            </div>
+            <div id="timer">
+                <!--        Time Remaining: <span id="time">10:00</span>-->
+                <span id="time">0:00</span>
+                <!--        <span id="time">PRE-MATCH</span>-->
+            </div>
+        </div>
+    </div>
+
+    <!--            <div id="score-timer" class="score-timer">-->
+    <!--                <div id="scoreboard">-->
+    <!--                    &lt;!&ndash;        Score: <span id="score">0 - 0</span>&ndash;&gt;-->
+    <!--                    <span id="score">0 - 0</span>-->
+    <!--                </div>-->
+    <!--                <div id="timer">-->
+    <!--                    &lt;!&ndash;        Time Remaining: <span id="time">10:00</span>&ndash;&gt;-->
+    <!--                    <span id="time">0:00</span>-->
+    <!--                    &lt;!&ndash;        <span id="time">PRE-MATCH</span>&ndash;&gt;-->
+    <!--                </div>-->
+    <!--            </div>-->
+    <!--        </div>-->
+
+
+    <div id="chat-container">
+        <!--    <div id="chat-resizer"></div>-->
+        <div class="drag"></div>
+
+        <div id="chat-box">
+
+            <!--            <p>Controls:<br>Move: WASD or Arrows<br>Kick: X, Space, Ctrl, Shift, Numpad 0<br>View: Numbers 1 to 4</p>-->
+
+
+        </div>
+        <input type="text" id="chat-input" autocomplete="off" maxlength="140" placeholder="Type a message..."/>
+        <!--    <input data-hook="input" type="text" maxlength="140">-->
+        <!--            <button id="toggle-ice-mode">Toggle Ice Mode</button>-->
+    </div>
+
+
+    <div id="in-game-buttons">
+        <!--    quick-exit-game-card-->
+        <!--    <button id="back-button" class="corner-button">Back</button>-->
+        <!--            <button id="back-button" class="corner-button">-->
+        <!--            <button id="exit-button" class="corner-button" aria-label="Exit game">-->
+        <button id="exit-button" aria-label="Exit game">
+            <!--        <svg-->
+            <!--    xmlns="http://www.w3.org/2000/svg"-->
+            <!--    viewBox="0 0 24 24"-->
+            <!--    width="24"-->
+            <!--    height="24"--><!--    fill="currentColor"-->
+            <!--    aria-hidden="true"-->
+            <!--  >-->
+            <!--    <path d="M15.41 16.59L10.83 12l4.58-4.59L14 6l-6 6 6 6z"></path>-->
+            <!--  </svg>-->
+            <!--        Second Start-->
+            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"
+                 width="24"
+                 height="24" viewBox="0 0 256 256" fill="currentColor" xml:space="preserve">
+
+<defs>
+</defs>
+                <g style="stroke: none; stroke-width: 0; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10;  opacity: 1;"
+                   transform="translate(1.4065934065934016 1.4065934065934016) scale(2.81 2.81)">
+	<path d="M 86.356 46.27 c 0.031 -0.065 0.059 -0.131 0.085 -0.199 c 0.042 -0.11 0.076 -0.222 0.104 -0.336 c 0.016 -0.062 0.034 -0.123 0.046 -0.186 c 0.034 -0.181 0.055 -0.364 0.055 -0.548 l 0 0 c 0 0 0 0 0 0 c 0 -0.184 -0.022 -0.367 -0.055 -0.548 c -0.012 -0.064 -0.03 -0.124 -0.046 -0.186 c -0.029 -0.114 -0.062 -0.226 -0.104 -0.336 c -0.026 -0.068 -0.055 -0.134 -0.086 -0.199 c -0.046 -0.099 -0.099 -0.194 -0.156 -0.288 c -0.039 -0.063 -0.077 -0.126 -0.12 -0.186 c -0.02 -0.027 -0.033 -0.057 -0.054 -0.084 L 74.316 27.93 c -1.009 -1.313 -2.894 -1.561 -4.207 -0.551 c -1.313 1.009 -1.561 2.893 -0.551 4.207 L 77.56 42 H 30.903 c -1.657 0 -3 1.343 -3 3 c 0 1.657 1.343 3 3 3 h 46.656 l -8.001 10.414 c -1.01 1.314 -0.763 3.197 0.551 4.207 c 0.545 0.419 1.188 0.621 1.826 0.621 c 0.9 0 1.79 -0.403 2.381 -1.172 l 11.71 -15.242 c 0.021 -0.027 0.035 -0.057 0.055 -0.085 c 0.043 -0.06 0.08 -0.122 0.119 -0.184 C 86.257 46.464 86.31 46.369 86.356 46.27 z"
+          style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10;  opacity: 1;"
+          transform=" matrix(1 0 0 1 0 0) " stroke-linecap="round"/>
+                    <path d="M 60.442 90 H 9.353 c -1.657 0 -3 -1.343 -3 -3 V 3 c 0 -1.657 1.343 -3 3 -3 h 51.089 c 1.657 0 3 1.343 3 3 v 30.054 c 0 1.657 -1.343 3 -3 3 s -3 -1.343 -3 -3 V 6 H 12.353 v 78 h 45.089 V 55.61 c 0 -1.657 1.343 -3 3 -3 s 3 1.343 3 3 V 87 C 63.442 88.657 62.1 90 60.442 90 z"
+                          style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10;  opacity: 1;"
+                          transform=" matrix(1 0 0 1 0 0) " stroke-linecap="round"/>
+</g>
+</svg>
+            <!--        Second End-->
+
+            <!--    ////Third-->
+            <!--    <svg-->
+            <!--    xmlns="http://www.w3.org/2000/svg"-->
+            <!--    viewBox="0 0 24 24"-->
+            <!--    width="24"-->
+            <!--    height="24"--><!--    fill="currentColor"-->
+            <!--    aria-hidden="true"-->
+            <!--  >-->
+            <!--    <path d="M10.09 15.59L8.67 14.17 11.5 11.34H3v-1.5h8.5l-2.83-2.83 1.41-1.41L15.92 12l-5.83 5.83zM19.5 19.5h-15v-15h15v15zm1.5-18H3a1.5 1.5 0 0 0-1.5 1.5v18A1.5 1.5 0 0 0 3 22.5h18a1.5 1.5 0 0 0 1.5-1.5v-18A1.5 1.5 0 0 0 21 1.5z"></path>-->
+            <!--  </svg>-->
+
+        </button>
+        <!--    quick-exit-game-->
+
+    </div>
+
+
+</div>
+
+
+<div id="shared">
+    <div id="sound-toggle" class="sound-button">
+        <button id="sound-button">🔊</button>
+    </div>
+
+    <!--        <button id="sound-toggle" class="sound-button" aria-label="Toggle sound">-->
+    <!--            <svg-->
+    <!--                    id="sound-icon"-->
+    <!--                    xmlns="http://www.w3.org/2000/svg"-->
+    <!--                    viewBox="0 0 24 24"-->
+    <!--                    width="24"-->
+    <!--                    height="24"-->
+    <!--                    fill="currentColor"-->
+    <!--                    aria-hidden="true"-->
+    <!--            >-->
+    <!--                &lt;!&ndash; Default: Sound On Icon &ndash;&gt;-->
+    <!--&lt;!&ndash;                <path&ndash;&gt;-->
+    <!--&lt;!&ndash;                        d="M5 9v6h4l5 5V4l-5 5H5zm14 3a7 7 0 0 0-2.15-5L16 8.45A5 5 0 0 1 18 12a5 5 0 0 1-2 4l1.15 1.15A7 7 0 0 0 19 12zm-4 0a3 3 0 0 0-.88-2.12L13.45 11a1 1 0 0 1 0 2l.67.67A3 3 0 0 0 15 12z"&ndash;&gt;-->
+    <!--&lt;!&ndash;                ></path>&ndash;&gt;-->
+
+    <!--                <path d="M16.5 12a5 5 0 0 1-3.45 4.77L13 15.5V12l3.5-3.5 1 1L16.5 12zM5 9v6h4l5 5V4l-5 5H5zm14.5.73l-1.41-1.41-4.95 4.95-1.44-1.44L15 8.05V15l4.5-4.5-.5-.77z"></path>-->
+    <!--            </svg>-->
+    <!--        </button>-->
+</div>
+
+
+</div>
+
+
+<!-- <div class="loading-bar"></div>-->
+
+<!--<div id="loading-screen">-->
+<!--    <h1>Loading...</h1>-->
+<!--</div>-->
+
+
+<!--<div class="top-section">-->
+<div id="modal-section">
+
+    <!--    <div id="results-modal" style="display: none;">-->
+    <div id="modal-overlay">
+        <div id="modal-content">
+            <h1 id="match-result-info"></h1>
+            <!-- Results in two columns -->
+            <div id="results-container">
+                <!-- Red Team -->
+                <div id="red-team">
+                    <h2 id="result-red-team-text">Red Team</h2>
+                    <table id="red-team-table">
+                        <thead>
+                        <tr>
+                            <th class="result-player-text">Player</th>
+                            <th class="result-goal-text">Goals</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <!-- Player rows for Red Team -->
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Blue Team -->
+                <div id="blue-team">
+                    <h2 id="result-blue-team-text">Blue Team</h2>
+                    <table id="blue-team-table">
+                        <thead>
+                        <tr>
+                            <th class="result-player-text">Player</th>
+                            <th class="result-goal-text">Goals</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <!-- Player rows for Blue Team -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Close Button -->
+            <!--                                <button id="close-modal">Close</button>-->
+        </div>
+    </div>
+    <!--    </div>-->
+
+
+    <!--    <div id="results-modal" style="display: none;">-->
+    <!--        <div id="modal-overlay">-->
+    <!--            <div id="modal-content">-->
+    <!--&lt;!&ndash;                <h1 style="margin: 0; font-size: 24px; font-weight: bold;">Match Results</h1>&ndash;&gt;-->
+    <!--                <table id="results-table" >-->
+    <!--                    <thead>-->
+    <!--                    <tr>-->
+    <!--                        <th>Player</th>-->
+    <!--&lt;!&ndash;                        <th style="border-bottom: 2px solid #ddd; padding: 10px;"></th>&ndash;&gt;-->
+    <!--                        <th>Goals</th>-->
+    <!--                    </tr>-->
+    <!--                    </thead>-->
+    <!--                    <tbody>-->
+    <!--                    &lt;!&ndash; Player rows will be dynamically inserted here &ndash;&gt;-->
+    <!--                    </tbody>-->
+    <!--                </table>-->
+    <!--                <button id="close-modal">-->
+    <!--                    Close-->
+    <!--                </button>-->
+    <!--            </div>-->
+    <!--        </div>-->
+    <!--    </div>-->
+
+</div>
+
+<!--<div class="bottom-section">-->
+
+
+<!--</div>-->
+
+
+<!--<div class="buttons">-->
+
+<!--    &lt;!&ndash;    <div id="sound-toggle">&ndash;&gt;-->
+<!--    &lt;!&ndash;  <button id="sound-button">🔊</button>&ndash;&gt;-->
+<!--    &lt;!&ndash;</div>&ndash;&gt;-->
+<!--    &lt;!&ndash;    for menu and sound&ndash;&gt;-->
+<!--</div>-->
+
+
+<!--<div id="music-toggle">-->
+<!--  <button id="music-button">🎵</button>-->
+<!--</div>-->
+
+
+<!--bar- -->
+
+
+<div id="scene-container">
+    <!--    <h1>tttttt</h1>-->
+    <!-- Our <canvas> will be inserted here -->
+</div>
+
+<!--<audio id="background-music" src="music/crypto-theme.mp3" autoplay loop></audio>-->
+<!--<script type="module" defer src="src/scripts/firebase.ts"></script>-->
+
+
+<!--<script>// Open modal when clicking "Change Server"-->
+<!--document.getElementById("changeServerBtn").addEventListener("click", function () {-->
+<!--  document.getElementById("serverModal").style.display = "flex";-->
+<!--});-->
+
+<!--// Close modal when clicking "Close"-->
+<!--document.getElementById("closeModal").addEventListener("click", function () {-->
+<!--  document.getElementById("serverModal").style.display = "none";-->
+<!--});-->
+
+<!--// Function to Select Server-->
+<!--function selectServer(serverName, ping) {-->
+<!--  alert(`Selected Server: ${serverName} (${ping}ms)`);-->
+
+<!--  // You can update the server connection here-->
+
+<!--  // Close Modal-->
+<!--  document.getElementById("serverModal").style.display = "none";-->
+<!--}</script>-->
+
+<!--<script>// Sample Server Data-->
+
+<!--// Sample Server Data-->
+<!--const servers = [-->
+<!--  { name: "Europe", region: "EU", ping: 45, users: 120 },-->
+<!--  { name: "North America", region: "US", ping: 120, users: 95 },-->
+<!--  { name: "Asia", region: "AS", ping: 80, users: 150 }-->
+<!--];-->
+
+<!--// Open modal when clicking "Change Server"-->
+<!--document.getElementById("changeServerBtn").addEventListener("click", function () {-->
+<!--  populateServerTable();-->
+<!--  document.getElementById("serverModal").style.display = "flex";-->
+<!--});-->
+
+<!--// Close modal when clicking "Close"-->
+<!--// document.getElementById("closeModal").addEventListener("click", function () {-->
+<!--//   document.getElementById("serverModal").style.display = "none";-->
+<!--// });-->
+
+<!--// Function to Populate Server Table-->
+<!--function populateServerTable() {-->
+<!--  const tableBody = document.getElementById("serverTableBody");-->
+<!--  tableBody.innerHTML = ""; // Clear previous data-->
+
+<!--  servers.forEach(server => {-->
+<!--    const row = document.createElement("tr");-->
+
+row.innerHTML = `
+<td>${server.name}</td>
+<!--      <td>${server.region}</td>-->
+<td class="ping ${getPingColor(server.ping)}">${server.ping}ms</td>
+<td>${server.users}</td>
+<!--      <td></td>-->
+`;
+
+<!--    row.addEventListener("click", () => selectServer(server, row));-->
+
+<!--    tableBody.appendChild(row);-->
+<!--  });-->
+<!--}-->
+
+<!--// Function to Get Ping Color-->
+<!--function getPingColor(ping) {-->
+<!--  if (ping < 50) return "green";-->
+<!--  if (ping < 100) return "orange";-->
+<!--  return "red";-->
+<!--}-->
+
+<!--// Function to Select Server-->
+<!--function selectServer(server, row) {-->
+<!--  // Remove 'selected' class from all rows-->
+<!--  document.querySelectorAll("tbody tr").forEach(tr => tr.classList.remove("selected"));-->
+
+<!--  // Add 'selected' class to clicked row-->
+<!--  row.classList.add("selected");-->
+
+<!--  // alert(`Selected Server: ${server.name} (${server.ping}ms, ${server.users} users)`);-->
+
+<!--  // You can update the server connection here-->
+
+<!--  // Close Modal after selection-->
+<!--  setTimeout(() => {-->
+<!--    document.getElementById("serverModal").style.display = "none";-->
+<!--  }, 500);-->
+<!--}-->
+
+<!--// const servers = [-->
+<!--//   { name: "Europe", region: "EU", ping: 45 },-->
+<!--//   { name: "North America", region: "US", ping: 120 },-->
+<!--//   { name: "Asia", region: "AS", ping: 80 }-->
+<!--// ];-->
+<!--//-->
+<!--// // Open modal when clicking "Change Server"-->
+<!--// document.getElementById("changeServerBtn").addEventListener("click", function () {-->
+<!--//   populateServerTable();-->
+<!--//   document.getElementById("serverModal").style.display = "flex";-->
+<!--// });-->
+<!--//-->
+<!--// // Close modal when clicking "Close"-->
+<!--// document.getElementById("closeModal").addEventListener("click", function () {-->
+<!--//   document.getElementById("serverModal").style.display = "none";-->
+<!--// });-->
+<!--//-->
+<!--// // Function to Populate Server Table-->
+<!--// function populateServerTable() {-->
+<!--//   const tableBody = document.getElementById("serverTableBody");-->
+<!--//   tableBody.innerHTML = ""; // Clear previous data-->
+<!--//-->
+<!--//   servers.forEach(server => {-->
+<!--//     const row = document.createElement("tr");-->
+<!--//-->
+<!--//     row.innerHTML = `-->
+<!--//       <td>${server.name}</td>-->
+<!--//       <td>${server.region}</td>-->
+<!--//       <td class="ping ${getPingColor(server.ping)}">${server.ping}ms</td>-->
+<!--//       <td><button class="select-btn" onclick="selectServer('${server.name}', ${server.ping})">Select</button></td>-->
+<!--//     `;-->
+<!--//-->
+<!--//     tableBody.appendChild(row);-->
+<!--//   });-->
+<!--// }-->
+<!--//-->
+<!--// // Function to Get Ping Color-->
+<!--// function getPingColor(ping) {-->
+<!--//   if (ping < 50) return "green";-->
+<!--//   if (ping < 100) return "orange";-->
+<!--//   return "red";-->
+<!--// }-->
+<!--//-->
+<!--// // Function to Select Server-->
+<!--// function selectServer(serverName, ping) {-->
+<!--//   alert(`Selected Server: ${serverName} (${ping}ms)`);-->
+<!--//-->
+<!--//   // You can update the server connection here-->
+<!--//-->
+<!--//   // Close Modal-->
+<!--//   document.getElementById("serverModal").style.display = "none";-->
+<!--// }-->
+<!--</script>-->
+<button></button>
+<script>
+
+
+    //     const languageDropdown = document.getElementById('language-dropdown');
+    // const titleText = document.getElementById('title-text');
+    // const startGameButton = document.getElementById('start-game-button');
+    //
+    // // Language translations
+    // const translations = {
+    //   en: {
+    //     title: 'Welcome to Soccer Game',
+    //     startButton: 'Start Game',
+    //   },
+    //   es: {
+    //     title: 'Bienvenido al Juego de Fútbol',
+    //     startButton: 'Comenzar Juego',
+    //   },
+    //   fr: {
+    //     title: 'Bienvenue au Jeu de Football',
+    //     startButton: 'Démarrer le Jeu',
+    //   },
+    //   de: {
+    //     title: 'Willkommen beim Fußballspiel',
+    //     startButton: 'Spiel Starten',
+    //   },
+    // };
+
+    // Function to update text based on language
+    // function updateLanguage(language) {
+    //   const translation = translations[language];
+    //   if (translation) {
+    //     titleText.textContent = translation.title;
+    //     startGameButton.textContent = translation.startButton;
+    //   }
+    // }
+    //
+    // // Event listener for language selection
+    // languageDropdown.addEventListener('change', (event) => {
+    //   const selectedLanguage = event.target.value;
+    //   updateLanguage(selectedLanguage);
+    //
+    //   // Optionally save the language preference
+    //   localStorage.setItem('preferredLanguage', selectedLanguage);
+    // });
+    //
+    // // Load preferred language on page load
+    // document.addEventListener('DOMContentLoaded', () => {
+    //   const savedLanguage = localStorage.getItem('preferredLanguage') || 'en';
+    //   languageDropdown.value = savedLanguage;
+    //   updateLanguage(savedLanguage);
+    // });
+
+    // start test
+    // const cards = document.querySelectorAll('.card');
+    //
+    // cards.forEach((card) => {
+    //   card.addEventListener('click', () => {
+    //     // Remove active class from all cards
+    //     cards.forEach((c) => c.classList.remove('active'));
+    //
+    //     // Add active class to the clicked card
+    //     card.classList.add('active');
+    //
+    //     // Get the selected game mode
+    //     const selectedMode = card.getAttribute('data-mode');
+    //     console.log(`Selected Mode: ${selectedMode}`);
+    //
+    //     // Perform any additional logic here (e.g., saving the mode or starting the game)
+    //   });
+    // });
+
+    // Get all mode cards
+    // const modeCards = document.querySelectorAll('.mode-card');
+    //
+    // // Function to handle card selection
+    // modeCards.forEach(card => {
+    //   card.addEventListener('click', () => {
+    //     // Remove 'selected' class from all cards
+    //     modeCards.forEach(card => card.classList.remove('selected'));
+    //
+    //     // Add 'selected' class to clicked card
+    //     card.classList.add('selected');
+    //
+    //     // Get the selected mode
+    //     const selectedMode = card.getAttribute('data-mode');
+    //     console.log(`Selected mode: ${selectedMode}`);
+    //
+    //     // Add your logic for initializing the game mode here
+    //   });
+    // });
+    //
+    // const modeCards = document.querySelectorAll('.mode-card');
+    // const startButton = document.getElementById('start-button');
+    //
+    // // Variable to store selected game mode
+    // let selectedMode = null;
+    //
+    // // Handle card selection
+    // modeCards.forEach(card => {
+    //   card.addEventListener('click', () => {
+    //     // Deselect all cards
+    //     modeCards.forEach(c => c.classList.remove('selected'));
+    //
+    //     // Select clicked card
+    //     card.classList.add('selected');
+    //     selectedMode = card.getAttribute('data-mode');
+    //     console.log(`Selected mode: ${selectedMode}`);
+    //
+    //     // Enable start button
+    //     startButton.disabled = false;
+    //   });
+    // });
+    //
+    // // Handle start button click
+    // startButton.addEventListener('click', () => {
+    //   if (selectedMode) {
+    //     console.log(`Starting game in mode: ${selectedMode}`);
+    //     // Replace with logic to initialize and start the game
+    //   }
+    // });
+    //
+
+    //
+    // const modeCards = document.querySelectorAll('.mode-card');
+    //
+    // modeCards.forEach(card => {
+    //   card.addEventListener('click', () => {
+    //     modeCards.forEach(c => c.classList.remove('selected')); // Deselect all
+    //     card.classList.add('selected'); // Select clicked card
+    //     const mode = card.dataset.mode; // Retrieve selected mode
+    //     console.log(`Selected Mode: ${mode}`);
+    //   });
+    // });
+    // const startScreen = document.getElementById('start-screen');
+    // const startGameButton = document.getElementById('start-game-button');
+    // const cards = document.querySelectorAll('.card');
+    //
+    // let selectedMode = null;
+    //
+    // // Add event listeners to cards for selection
+    // cards.forEach((card) => {
+    //   card.addEventListener('click', () => {
+    //     // Remove active class from all cards
+    //     cards.forEach((c) => c.classList.remove('active'));
+    //
+    //     // Add active class to the clicked card
+    //     card.classList.add('active');
+    //
+    //     // Enable the start button and store the selected mode
+    //     selectedMode = card.getAttribute('data-mode');
+    //     startGameButton.classList.add('enabled');
+    //     startGameButton.disabled = false;
+    //   });
+    // });
+    //
+    // // Start game logic
+    // startGameButton.addEventListener('click', () => {
+    //   if (selectedMode) {
+    //     console.log(`Starting game in mode: ${selectedMode}`);
+    //     startScreen.style.display = 'none'; // Hide start screen
+    //
+    //     // Call your game's initialization logic here
+    //     startGame(selectedMode);
+    //   }
+    // });
+    //
+    // // Placeholder for game start function
+    // function startGame(mode) {
+    //   // Initialize Three.js soccer game with the selected mode
+    //   console.log(`Game mode '${mode}' initialized.`);
+    // }
+
+    // end test
+
+
+    //     const modeCards = document.querySelectorAll('.mode-card');
+    // const startButton = document.getElementById('start-button');
+    //
+    // // Variable to store selected game mode
+    // let selectedMode = null;
+    //
+    // // Handle card selection
+    // modeCards.forEach(card => {
+    //   card.addEventListener('click', () => {
+    //     // Deselect all cards
+    //     modeCards.forEach(c => c.classList.remove('selected'));
+    //
+    //     // Select clicked card
+    //     card.classList.add('selected');
+    //     selectedMode = card.getAttribute('data-mode');
+    //     console.log(`Selected mode: ${selectedMode}`);
+    //
+    //     // Enable start button
+    //     startButton.disabled = false;
+    //   });
+    // });
+    //
+    // // Handle start button click
+    // startButton.addEventListener('click', () => {
+    //   if (selectedMode) {
+    //     console.log(`Starting game in mode: ${selectedMode}`);
+    //     // Replace with logic to initialize and start the game
+    //   }
+    // });
+
+
+    //    const dropdown = document.getElementById('game-mode-selector');
+    //
+    //// Function to update dropdown background color
+    //function updateDropdownColor() {
+    //  const selectedOption = dropdown.options[dropdown.selectedIndex];
+    //  const selectedColor = selectedOption.getAttribute('data-color');
+    //  dropdown.style.backgroundColor = selectedColor;
+    //}
+    //
+    //// Set initial background color
+    //updateDropdownColor();
+    //
+    //// Add event listener to update background on change
+    //dropdown.addEventListener('change', updateDropdownColor);
+
+    // const gameModeSelector = document.getElementById('game-mode-dropdown');
+    //     const modeDescriptions = {
+    //   classic: 'Classic soccer game on grass.',
+    //   'ice-mode': 'Slippery ice field for a challenging game.',
+    //   challenge: 'Face tougher opponents in this mode.'
+    // };
+    //
+    // gameModeSelector.addEventListener('change', (event) => {
+    //   const description = modeDescriptions[event.target.value];
+    //   document.getElementById('mode-description').innerText = description;
+    // });
+
+    // const sliderContent = document.querySelector('.slider-content');
+    // const prevBtn = document.querySelector('.prev-btn');
+    // const nextBtn = document.querySelector('.next-btn');
+    // let currentIndex = 0;
+    //
+    // function updateSlider() {
+    //   const totalItems = document.querySelectorAll('.slider-item').length;
+    //   const translateX = -currentIndex * 100; // Shift by 100% for each slide
+    //   sliderContent.style.transform = `translateX(${translateX}%)`;
+    // }
+    //
+    // prevBtn.addEventListener('click', () => {
+    //   const totalItems = document.querySelectorAll('.slider-item').length;
+    //   currentIndex = (currentIndex - 1 + totalItems) % totalItems;
+    //   updateSlider();
+    // });
+    //
+    // nextBtn.addEventListener('click', () => {
+    //   const totalItems = document.querySelectorAll('.slider-item').length;
+    //   currentIndex = (currentIndex + 1) % totalItems;
+    //   updateSlider();
+    // });
+    //
+    // // Initialize
+    // updateSlider();
+
+
+    // Add functionality to close the modal
+    // document.getElementById("close-modal").addEventListener("click", () => {
+    //     document.getElementById("results-modal").style.display = "none";
+    // });
+
+    // Call the function when the match ends
+    // setTimeout(() => showMatchResults(redTeam, blueTeam), 3000); // Simulate end of match
+
+    // Function to populate the results modal
+    // function showMatchResults(players) {
+    //   const modal = document.getElementById("results-modal");
+    //   const tableBody = document.getElementById("results-table").querySelector("tbody");
+    //
+    //   // Clear any existing rows
+    //   tableBody.innerHTML = "";
+    //
+    //   // Add player rows
+    //   players.forEach((player) => {
+    //     const row = document.createElement("tr");
+    //
+    //     const nameCell = document.createElement("td");
+    //     nameCell.textContent = player.name;
+    //     row.appendChild(nameCell);
+    //
+    //     const goalsCell = document.createElement("td");
+    //     goalsCell.textContent = player.goals;
+    //     row.appendChild(goalsCell);
+    //
+    //     tableBody.appendChild(row);
+    //   });
+    //
+    //   // Show the modal
+    //   modal.style.display = "block";
+    //   // modal.style.display = "none";
+    // }
+    //
+    // // Add functionality to close the modal
+    // document.getElementById("close-modal").addEventListener("click", () => {
+    //   document.getElementById("results-modal").style.display = "none";
+    // });
+    //
+    // // Call the function when the match ends
+    // // Example: Call showMatchResults(players) after receiving game state
+    // setTimeout(() => showMatchResults(players), 3000); // Simulate end of match
+</script>
+
+</body>
+</html>
